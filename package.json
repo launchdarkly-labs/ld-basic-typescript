@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "@types/node": "^17.0.13",
+    "dotenv": "^14.3.2",
+    "launchdarkly-node-server-sdk": "^6.2.2",
+    "typescript": "^4.5.5"
+  }
+}
