@@ -4,7 +4,7 @@ dotenv.config({ path: __dirname + "/.env" });
 
 let ldClient: LaunchDarkly.LDClient;
 
-async function getClient(): Promise<any> {
+async function getClient(): Promise<LaunchDarkly.LDClient> {
   const client = LaunchDarkly.init(process.env.LAUNCHDARKLY_SDK_KEY);
   await client.waitForInitialization();
   return client;
@@ -12,9 +12,9 @@ async function getClient(): Promise<any> {
 
 async function getFlagValue(
   key: string,
-  user: LaunchDarkly.LDUser,
+  user: LaunchDarkly.LDUser | null,
   defaultValue: any = false
-): Promise<any> {
+): Promise<LaunchDarkly.LDFlagValue> {
   let flagValue: LaunchDarkly.LDFlagValue;
   if (!ldClient) ldClient = await getClient();
   if (!user) {
